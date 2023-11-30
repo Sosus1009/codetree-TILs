@@ -9,24 +9,18 @@ void input(int *p, int k) {
 }
 
 int fun(int *x, int *y, int n, int m) {
-    int i,j,t;
-    int a,b=0;
-    for(i=0;i<n;i++)
-    {
-        for(j=0;j<m;j++)
-        {
-           if(x[i]==y[j])
-           {
-            for(t=i;t<m-i;t++)
-            {
-                if(x[t]==y[t+j])
-                    b++;
+    int i, j;
+
+    for (i = 0; i <= n - m; i++) {
+        for (j = 0; j < m; j++) {
+            if (x[i + j] != y[j]) {
+                break;
             }
-            if(b==m) return 1;
-           }
+        }
+        if (j == m) {
+            return 1;
         }
     }
-    
     return 0;
 }
 
@@ -43,10 +37,10 @@ int main() {
 
     sw = fun(p1, p2, n, m);
 
-    if(sw == 1) {
-        printf("Yes\n");
-    } else {
+    if (sw == 0) {
         printf("No\n");
+    } else {
+        printf("Yes\n");
     }
 
     free(p1);
