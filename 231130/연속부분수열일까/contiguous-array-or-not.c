@@ -9,25 +9,25 @@ void input(int *p, int k) {
 }
 
 int fun(int *x, int *y, int n, int m) {
-    int i, j, start;
-    for(i = 0; i < n; i++) {
-        if(x[i] == y[0]) {
-            start = i;
-            break;
+    int i,j,t;
+    int a,b=0;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+           if(x[i]==y[j])
+           {
+            for(t=i;t<m-i;t++)
+            {
+                if(x[t]==y[t+j])
+                    b++;
+            }
+            if(b==m) return 1;
+           }
         }
     }
-
-    if(i == n || m > n - start) {
-        return 0;
-    }
-
-    j = 0;
-    for(i = start; i < n; i++, j++) {
-        if(x[i] != y[j]) {
-            return 0;
-        }
-    }
-    return 1;
+    
+    return 0;
 }
 
 int main() {
